@@ -35,7 +35,7 @@ async def calculate_recommendation():
             "method" : method,
             "location" : location,
             "requirement" : requirement,
-            "recommended_sport" : sport_result,
+            "recommend_sport" : sport_result,
             "message": f"숙련도 {level} 단계에 맞춘 최적의 종목은 [{sport_result}]입니다."
         }
 
