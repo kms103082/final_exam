@@ -29,6 +29,7 @@ if st.button("나에게 맞는 운동 종목 추천받기"):
             json.dump(input_data, f, ensure_ascii=False, indent=4)
 
         result_data = {}
+        
         with st.spinner("백엔드 서버에서 추천 종목을 계산 중입니다..."):
             for _ in range(6):
                 time.sleep(0.5)

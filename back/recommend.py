@@ -25,21 +25,24 @@ async def calculate_recommendation():
             else:
                 sport_result = "농구🏀" if requirement == "고강도" else "피구🤾"
         else:
-            sport_result = "배드민턴 🏸"
+            if location == "실내":
+                sport_result = "배드민턴 🏸" if requirement == "저강도" else "스쿼시"
+            else:
+                sport_result = "테니스🎾"
 
         result_payload = {
-            "level": level,
-            "method": method,
-            "location": location,
-            "requirement": requirement,
-            "recommended_sport": sport_result,
+            "level" : level,
+            "method" : method,
+            "location" : location,
+            "requirement" : requirement,
+            "recommended_sport" : sport_result,
             "message": f"숙련도 {level} 단계에 맞춘 최적의 종목은 [{sport_result}]입니다."
         }
 
         with open(JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(result_payload, f, ensure_ascii=False, indent=4)
             
-        return {"status": "success"}
+        return {"status" : "success", "recommend_sport" : sport_result}
         
     except Exception as e:
-        return {"status": "error", "detail": str(e)}
+        return {"status" : "error", "detail" : str(e)}
