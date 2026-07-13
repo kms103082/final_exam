@@ -20,7 +20,7 @@ if st.button("나에게 맞는 운동 종목 추천받기"):
         "method" : method,
         "location" : location,
         "requirement" : requirement,
-        "recommend_sport" : None,
+        "recommended_sport" : None,
         "message" : None
     }
     
@@ -31,20 +31,20 @@ if st.button("나에게 맞는 운동 종목 추천받기"):
         result_data = {}
 
         with st.spinner("백엔드 서버에서 추천 종목을 계산 중입니다..."):
-            for _ in range(6):
+            for _ in range(20):
                 time.sleep(0.5)
                 try:
                     with open(JSON_PATH, "r", encoding="utf-8") as f:
                         temp_data = json.load(f)
-                        if temp_data.get("recommend_sport") is not None:
+                        if temp_data.get("recommended_sport") is not None:
                             result_data = temp_data
                             break
                 except Exception:
                     continue
 
-        if result_data.get("recommend_sport"):
+        if result_data.get("recommended_sport"):
             st.success("추천 결과 분석이 완료되었습니다")
-            st.metric(label="추천 종목", value=result_data.get("recommend_sport"))
+            st.metric(label="추천 종목", value=result_data.get("recommended_sport"))
             st.info(f"가이드 메시지: {result_data.get('message')}")
         else:
             st.error("응답을 받지 못했습니다. 다시 시도해주세요.")
