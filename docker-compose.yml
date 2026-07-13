@@ -1,22 +1,16 @@
 version: '3.8'
 
 services:
-  back:
+  backend:
     build: ./back
-    container_name: recommend-back
     ports:
       - "8000:8000"
-    volumes:
-      - ./recommend.json:/app/recommend.json
     restart: always
 
-  front:
+  frontend:
     build: ./front
-    container_name: recommend-front
     ports:
-      - "80:8501"
-    volumes:
-      - ./recommend.json:/app/recommend.json
+      - "8501:8501"
     restart: always
     depends_on:
-      - back
+      - backend
