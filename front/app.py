@@ -19,7 +19,7 @@ if st.button("나에게 맞는 운동 종목 추천받기"):
         "level": level
     }
 
-    BACKEND_URL = "http://localhost:8000/recommend"
+    BACKEND_URL = "http://back:8000/recommend"
     
     with st.spinner("백엔드 서버(FastAPI)와 통신하여 추천 결과를 가져오는 중..."):
         try:
