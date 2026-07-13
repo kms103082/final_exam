@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from recommend import recommend_router
 
-app = FastAPI(title = "추천 시스템")
+app = FastAPI(title = "백엔드 추천 시스템")
 app.include_router(recommend_router)
 
 if __name__ == "__main__":
